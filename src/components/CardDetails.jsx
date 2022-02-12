@@ -1,9 +1,11 @@
 import PropTypes from 'prop-types';
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router';
 import { fetchById } from '../services/fetchApi';
 
 export default function CardDetails({ fetchType, id, type, typeKey, category }) {
   const [stateType, setStateType] = useState([]);
+  const history = useHistory();
 
   useEffect(() => {
     fetchById(fetchType, id).then((response) => setStateType(response[typeKey][0]));
@@ -43,11 +45,22 @@ export default function CardDetails({ fetchType, id, type, typeKey, category }) 
     <section className="flex flex-col items-center justify-center">
       { stateType && (
         <>
+          <button
+            type="button"
+            onClick={ () => history.push('/comidas') }
+            className="w-44 bg-black text-lg font-bold
+            text-white border-2 border-purple-900 rounded-md my-2 h-10
+            hover:opacity-75 transition ease-in-out delay-150
+            hover:-translate-y-1 hover:scale-105"
+          >
+            VOLTAR
+          </button>
           <img
             src={ stateType[`str${type}Thumb`] }
             alt=""
             data-testid="recipe-photo"
-            className="w-5/6 mt-4 rounded-md shadow-lg shadow-black-500/50 mb-4"
+            className="w-5/6 md:w-4/6 md:h-[45rem] mt-4 rounded-md
+            shadow-lg shadow-black-500/50 mb-4"
           />
           <p
             data-testid="recipe-title"
@@ -84,7 +97,8 @@ export default function CardDetails({ fetchType, id, type, typeKey, category }) 
           </ul>
           <p
             data-testid="instructions"
-            className="text-center font-extrabold bg-gray-300 w-5/6 rounded-xl p-4
+            className="text-center font-extrabold
+            bg-gray-300 w-5/6 md:w-3/6 rounded-xl p-4
             text-black no-underline mt-3 md:underline
             shadow-lg shadow-black-500/50 mb-4"
           >
@@ -95,7 +109,6 @@ export default function CardDetails({ fetchType, id, type, typeKey, category }) 
             (stateType.strYoutube)
           && (
             <iframe
-              width="75%"
               height="340"
               src={ splitYoutube(stateType.strYoutube) }
               title="YouTube video player"
@@ -103,7 +116,7 @@ export default function CardDetails({ fetchType, id, type, typeKey, category }) 
               allow="accelerometer; autoplay;
             clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
-              className="my-6 shadow-xl shadow-slate-600 border-8 border-white"
+              className="my-6 shadow-xl md:w-3/6 shadow-slate-600 border-8 border-white"
             />
           )
           }

@@ -45,7 +45,7 @@ export default function CardIngredients({ type }) {
               data-testid={ `${index}-ingredient-card` }
               name={ ingredient[str] }
               onClick={ handleClick }
-              className="mx-6 my-2 w-28 rounded-lg bg-white flex
+              className="mx-6 my-2 w-28 md:w-96 rounded-lg bg-white flex
               content-center flex-col justify-center items-center
               shadow-lg shadow-black-500/50 mb-4"
             >
