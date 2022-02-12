@@ -3,7 +3,7 @@
 Projeto em grupo proposto pela [Trybe](https://www.betrybe.com/) com o objetivo de consolidar todos os conhecimentos de hard skills e soft skills desenvolvidos ao longo do módulo de front-end.
 
 # Deploy do projeto
-- 
+- Acessar site (https://main.d1c34ifddgonvj.amplifyapp.com/)
 
 ## Desenvolvedores
 - [Arthur Simões](https://github.com/ArthurSimoess)
