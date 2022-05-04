@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import FavoriteBtn from '../components/FavoriteBtn';
 import ShareBtn from '../components/ShareBtn';
 import useId from '../hooks/useId';
@@ -13,6 +14,8 @@ export default function DrinksInProgress() {
   const [checkedIngredients, setCheckedIngredients] = useState([]);
 
   const id = useId();
+
+  const history = useHistory();
 
   useEffect(() => {
     fetchById('cocktail', id).then(({ drinks }) => setStartedDrink({ ...drinks[0] }));
@@ -58,6 +61,16 @@ export default function DrinksInProgress() {
     <div className="flex flex-col items-center justify-center bg-slate-100 h-full py-10">
       { startedDrink && (
         <>
+          <button
+            type="button"
+            onClick={ () => history.push(`/bebidas/${id}`) }
+            className="w-44 bg-black text-lg font-bold
+            text-white border-2 border-purple-900 rounded-md my-2 h-10
+            hover:opacity-75 transition ease-in-out delay-150
+            hover:-translate-y-1 hover:scale-105"
+          >
+            VOLTAR
+          </button>
           <img
             src={ startedDrink.strDrinkThumb }
             alt=""

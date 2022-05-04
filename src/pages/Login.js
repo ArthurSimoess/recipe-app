@@ -138,7 +138,8 @@ export default function Login() {
           disabled:bg-gray-500 opacity-7 bg-origin-padding
           focus-within:shadow-lg  w-[20rem] md:w-[35rem] lg:w-[40rem]
           mx-3 mb-3 mt-2.5 px-3 py-2
-          focus-visible:ring active:bg-purple-600 text-white font-extrabold"
+          focus-visible:ring active:bg-purple-600 text-white
+          font-extrabold disabled:cursor-not-allowed"
           type="button"
           data-testid="login-submit-btn"
           onClick={ handleClick }

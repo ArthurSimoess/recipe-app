@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import FavoriteBtn from '../components/FavoriteBtn';
 import ShareBtn from '../components/ShareBtn';
 import useId from '../hooks/useId';
@@ -13,6 +14,8 @@ export default function MealsInProgress() {
   const [checkedIngredients, setCheckedIngredients] = useState([]);
 
   const id = useId();
+
+  const history = useHistory();
 
   useEffect(() => {
     fetchById('meal', id).then(({ meals }) => setStartedMeal({ ...meals[0] }));
@@ -58,11 +61,22 @@ export default function MealsInProgress() {
     <section className="flex flex-col items-center bg-slate-100 h-full py-10">
       { startedMeal && (
         <>
+          <button
+            type="button"
+            onClick={ () => history.push(`/comidas/${id}`) }
+            className="w-44 bg-black text-lg font-bold
+            text-white border-2 border-purple-900 rounded-md my-2 h-10
+            hover:opacity-75 transition ease-in-out delay-150
+            hover:-translate-y-1 hover:scale-105"
+          >
+            VOLTAR
+          </button>
           <img
             src={ startedMeal.strMealThumb }
             alt=""
             data-testid="recipe-photo"
-            className="flex items-center justify-center my-4 mx-auto rounded-md w-3/4"
+            className="flex items-center justify-center my-4 mx-auto
+            rounded-md w-3/4 sm:w-[30rem] xl:w-[35rem]"
           />
           <p
             data-testid="recipe-title"

@@ -4,8 +4,8 @@ import Context from './Context';
 
 export default function Provider({ children }) {
   const [login, setLogin] = useState({
-    email: '',
-    password: '',
+    email: 'usuario@teste.com',
+    password: 'senhaTeste123',
   });
 
   const [resultFetch, setResultFetch] = useState([]);
